@@ -1,5 +1,6 @@
 import "./formIndex.css";
 import FormField from "./Components/formField/formField";
+import { useState} from 'react'
 
 const sendersDetails = [
   {
@@ -23,7 +24,7 @@ const sendersDetails = [
   {
     tagtype: "input",
     label: "Email",
-    id: "sendersEmailField",
+    id: "sendersEmail",
     className: "inputField",
     type: "email",
     labelClass: "hideClass",
@@ -32,7 +33,7 @@ const sendersDetails = [
   {
     tagtype: "input",
     label: "Phone",
-    id: "phoneField",
+    id: "sendersPhone",
     className: "inputField",
     type: "text",
     labelClass: "hideClass",
@@ -40,7 +41,9 @@ const sendersDetails = [
   },
 ];
 
-function DivSenderDeets() {
+function DivSenderDeets({setData}) {
+
+
   return (
     <>
     <div className="container">
@@ -56,6 +59,13 @@ function DivSenderDeets() {
             type={item.type}
             labelClass={item.labelClass}
             placeholder={item.placeholder}
+            onChange={(e)=>{
+              setData((prevData)=>({
+                ...prevData,
+                [item.id]: e.target.value
+              }))
+            }
+            }
           />
         );
       })}
@@ -77,7 +87,7 @@ const clientDetails = [
   {
     tagtype: "textArea",
     label: "Client's Address",
-    id: "clientAddress",
+    id: "clientsAddress",
     className: "textField",
     type: "text",
     labelClass: "hideClass",
@@ -86,7 +96,7 @@ const clientDetails = [
   {
     tagtype: "input",
     label: "Email",
-    id: "clientEmailField",
+    id: "clientsEmail",
     className: "inputField",
     type: "email",
     labelClass: "hideClass",
@@ -95,7 +105,7 @@ const clientDetails = [
   {
     tagtype: "input",
     label: "Phone",
-    id: "clientphoneField",
+    id: "clientsPhone",
     className: "inputField",
     type: "text",
     labelClass: "hideClass",
@@ -104,7 +114,7 @@ const clientDetails = [
 ];
 
 
-function DivClientDeets(){
+function DivClientDeets({setData}){
 
   return(
     <>
@@ -121,6 +131,13 @@ function DivClientDeets(){
             type={item.type}
             labelClass={item.labelClass}
             placeholder={item.placeholder}
+            onChange={(e)=>{
+
+              setData((prevData)=>({
+                ...prevData,
+                [item.id]: e.target.value
+              }))
+            }}
           />
         );
       })}
@@ -173,7 +190,7 @@ const particulars = [
 
 ]
 
-function ParticularsDiv(){
+function ParticularsDiv({setData}){
 
   return(
     <>
@@ -190,6 +207,12 @@ function ParticularsDiv(){
             type={item.type}
             labelClass={item.labelClass}
             placeholder={item.placeholder}
+            onChange={(e)=>{
+              setData((prevData)=>({
+                ...prevData,
+                [item.id]: e.target.value
+              }))
+            }}
           />
         );
       
@@ -202,14 +225,79 @@ function ParticularsDiv(){
 }
 
 
+const notesDiv = [
+  {
+    tagtype: "textArea",
+    label: "Additional Notes",
+    id: "addNote",
+    className: "inputField",
+    type: "text",
+    labelClass: "hideClass",
+    placeholder: "Additional Notes"
+  }
+]
+
+function NotesDiv ({setData}){
+
+  return(
+    <>
+    <div className="container">
+    {notesDiv.map(item =>{
+      return (
+        <FormField
+          key={item.id}
+          tagtype={item.tagtype}
+          label={item.label}
+          id={item.id}
+          className={item.className}
+          type={item.type}
+          labelClass={item.labelClass}
+          placeholder={item.placeholder}
+          onChange={(e)=>{
+            setData((prevData)=>({
+              ...prevData,
+              [item.id]: e.target.value
+            }))
+          }}
+        />
+      )
+    })}
+    </div>
+    </>
+  )
+}
+
 
 function FormBody() {
+
+  const [data, setData] = useState({
+    sendersName: "",
+    sendersAddress: "",
+    sendersEmail: "",
+    sendersPhone: "",
+    clientsName: "",
+    clientsAddress: "",
+    clientsEmail: "",
+    clientsPhone: "",
+    invoiceNum: "",
+    invoiceDate: "",
+    currency: "",
+    remarks: "",
+    addNote: ""
+    
+  });
+
+
   return (
     <>
+    <button onClick={()=>{
+      console.log(JSON.stringify(data))
+    }}>Print</button>
     <div className="formBodyDiv">
-      <DivSenderDeets />
-      <DivClientDeets />
-      <ParticularsDiv />
+      <DivSenderDeets setData={setData}/>
+      <DivClientDeets setData={setData}/>
+      <ParticularsDiv setData={setData}/>
+      <NotesDiv setData={setData}/>
       </div>
     </>
   );
