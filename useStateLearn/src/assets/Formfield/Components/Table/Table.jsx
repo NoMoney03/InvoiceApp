@@ -1,17 +1,8 @@
 import { useState } from "react";
 import "./Table.css";
 
-export default function Table() {
-  const [tableRow, setTableRow] = useState([
-    {
-      No: 1,
-      Description: "",
-      Quantity: "",
-      Price: "",
-      Total: "",
-      Action: "",
-    },
-  ]);
+export default function Table({tableRow, setTableRow}) {
+  
 
   const addRow = () =>
     setTableRow([
@@ -29,13 +20,6 @@ export default function Table() {
   return (
     <>
       <div className="container">
-        <button
-          onClick={() => {
-            console.log(tableRow);
-          }}
-        >
-          Print
-        </button>
         <h2 className="h2Class">Items</h2>
         <table className="tableMaster">
           <thead>

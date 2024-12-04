@@ -312,7 +312,16 @@ function FormBody() {
     paymentInfo: "",
   });
 
-
+  const [tableRow, setTableRow] = useState([
+    {
+      No: 1,
+      Description: "",
+      Quantity: "",
+      Price: "",
+      Total: "",
+      Action: "",
+    },
+  ]);
 
 
 
@@ -320,7 +329,8 @@ function FormBody() {
     <>
       <button
         onClick={() => {
-          console.log(JSON.stringify(data));
+          console.log(data);
+          console.log(tableRow);
         }}
       >
         Print
@@ -329,7 +339,7 @@ function FormBody() {
         <DivSenderDeets setData={setData} />
         <DivClientDeets setData={setData} />
         <ParticularsDiv setData={setData} />
-        <Table />
+        <Table tableRow={tableRow} setTableRow={setTableRow}/>
         <NotesDiv setData={setData} />
         
         <PaymentInfoDiv setData={setData} />
