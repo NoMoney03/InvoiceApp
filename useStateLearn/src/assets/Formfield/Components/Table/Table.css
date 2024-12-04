@@ -1,0 +1,38 @@
+.tableMaster {
+  max-width: var(--max-width);
+  width: fit-content;
+  border: var(--bdPink);
+}
+
+.tableRow {
+  /* border: var(--bdBlue); */
+  display: inline-flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.tbody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tableInput {
+  max-width: var(--max-width);
+  width: var(--fieldWd);
+}
+
+.inputQty,
+.inputPrice {
+  width: calc(var(--fieldWd) / 1 / 3);
+  max-width: calc(var(--max-width) / 1 / 3);
+}
+
+.thlabel {
+  display: none;
+}
+
+.hideBtn {
+  opacity: 0;
+  
+}

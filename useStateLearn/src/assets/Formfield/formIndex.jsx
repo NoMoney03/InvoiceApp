@@ -1,6 +1,8 @@
 import "./formIndex.css";
 import FormField from "./Components/formField/formField";
-import { useState} from 'react'
+import { useState } from "react";
+import Table from "./Components/Table/Table";
+
 
 const sendersDetails = [
   {
@@ -10,7 +12,7 @@ const sendersDetails = [
     className: "inputField",
     type: "text",
     labelClass: "hideClass",
-    placeholder: "Sender's Name"
+    placeholder: "Sender's Name",
   },
   {
     tagtype: "textArea",
@@ -19,7 +21,7 @@ const sendersDetails = [
     className: "textField",
     type: "text",
     labelClass: "hideClass",
-    placeholder: "Sender's Address"
+    placeholder: "Sender's Address",
   },
   {
     tagtype: "input",
@@ -28,47 +30,44 @@ const sendersDetails = [
     className: "inputField",
     type: "email",
     labelClass: "hideClass",
-    placeholder: "Email"
+    placeholder: "Email",
   },
   {
     tagtype: "input",
     label: "Phone",
     id: "sendersPhone",
     className: "inputField",
-    type: "text",
+    type: "tel",
     labelClass: "hideClass",
-    placeholder: "Phone"
+    placeholder: "Phone",
   },
 ];
 
-function DivSenderDeets({setData}) {
-
-
+function DivSenderDeets({ setData }) {
   return (
     <>
-    <div className="container">
-      <h2 className="h2Class">From</h2>
-      {sendersDetails.map((item) => {
-        return (
-          <FormField
-            key={item.id}
-            tagtype={item.tagtype}
-            label={item.label}
-            id={item.id}
-            className={item.className}
-            type={item.type}
-            labelClass={item.labelClass}
-            placeholder={item.placeholder}
-            onChange={(e)=>{
-              setData((prevData)=>({
-                ...prevData,
-                [item.id]: e.target.value
-              }))
-            }
-            }
-          />
-        );
-      })}
+      <div className="container">
+        <h2 className="h2Class">From</h2>
+        {sendersDetails.map((item) => {
+          return (
+            <FormField
+              key={item.id}
+              tagtype={item.tagtype}
+              label={item.label}
+              id={item.id}
+              className={item.className}
+              type={item.type}
+              labelClass={item.labelClass}
+              placeholder={item.placeholder}
+              onChange={(e) => {
+                setData((prevData) => ({
+                  ...prevData,
+                  [item.id]: e.target.value,
+                }));
+              }}
+            />
+          );
+        })}
       </div>
     </>
   );
@@ -82,7 +81,7 @@ const clientDetails = [
     className: "inputField",
     type: "text",
     labelClass: "hideClass",
-    placeholder: "Client's Name"
+    placeholder: "Client's Name",
   },
   {
     tagtype: "textArea",
@@ -91,7 +90,7 @@ const clientDetails = [
     className: "textField",
     type: "text",
     labelClass: "hideClass",
-    placeholder: "Client's Address"
+    placeholder: "Client's Address",
   },
   {
     tagtype: "input",
@@ -100,53 +99,48 @@ const clientDetails = [
     className: "inputField",
     type: "email",
     labelClass: "hideClass",
-    placeholder: "Email"
+    placeholder: "Email",
   },
   {
     tagtype: "input",
     label: "Phone",
     id: "clientsPhone",
     className: "inputField",
-    type: "text",
-    labelClass: "hideClass",
-    placeholder: "Phone"
+    type: "tel",
+    labelClass: "hideClass no-arrow",
+    placeholder: "Phone",
   },
 ];
 
-
-function DivClientDeets({setData}){
-
-  return(
+function DivClientDeets({ setData }) {
+  return (
     <>
-    <div className="container">
-    <h2 className="h2Class">Bill To</h2>
-    {clientDetails.map((item) => {
-        return (
-          <FormField
-            key={item.id}
-            tagtype={item.tagtype}
-            label={item.label}
-            id={item.id}
-            className={item.className}
-            type={item.type}
-            labelClass={item.labelClass}
-            placeholder={item.placeholder}
-            onChange={(e)=>{
-
-              setData((prevData)=>({
-                ...prevData,
-                [item.id]: e.target.value
-              }))
-            }}
-          />
-        );
-      })}
-
-    </div>
+      <div className="container">
+        <h2 className="h2Class">Bill To</h2>
+        {clientDetails.map((item) => {
+          return (
+            <FormField
+              key={item.id}
+              tagtype={item.tagtype}
+              label={item.label}
+              id={item.id}
+              className={item.className}
+              type={item.type}
+              labelClass={item.labelClass}
+              placeholder={item.placeholder}
+              onChange={(e) => {
+                setData((prevData) => ({
+                  ...prevData,
+                  [item.id]: e.target.value,
+                }));
+              }}
+            />
+          );
+        })}
+      </div>
     </>
-  )
+  );
 }
-
 
 const particulars = [
   {
@@ -156,7 +150,7 @@ const particulars = [
     className: "inputField",
     type: "text",
     labelClass: "hideClass",
-    placeholder: "Invoice Number"
+    placeholder: "Invoice Number",
   },
   {
     tagtype: "input",
@@ -165,7 +159,7 @@ const particulars = [
     className: "inputField",
     type: "date",
     labelClass: "hideClass",
-    placeholder: "DD-MM-YYYY"
+    placeholder: "DD-MM-YYYY",
   },
   {
     tagtype: "input",
@@ -174,7 +168,7 @@ const particulars = [
     className: "inputField",
     type: "text",
     labelClass: "hideClass",
-    placeholder: "Currency e.g. USD / EUR"
+    placeholder: "Currency e.g. USD / EUR",
   },
   {
     tagtype: "textArea",
@@ -183,47 +177,39 @@ const particulars = [
     className: "inputField",
     type: "text",
     labelClass: "hideClass",
-    placeholder: "Remarks"
+    placeholder: "Remarks",
   },
+];
 
-
-
-]
-
-function ParticularsDiv({setData}){
-
-  return(
+function ParticularsDiv({ setData }) {
+  return (
     <>
-    <div className="container">
-    <h2 className="h2Class">Particulars</h2>
-    {particulars.map((item => {
-        return (
-          <FormField
-            key={item.id}
-            tagtype={item.tagtype}
-            label={item.label}
-            id={item.id}
-            className={item.className}
-            type={item.type}
-            labelClass={item.labelClass}
-            placeholder={item.placeholder}
-            onChange={(e)=>{
-              setData((prevData)=>({
-                ...prevData,
-                [item.id]: e.target.value
-              }))
-            }}
-          />
-        );
-      
-
-    }))}
-    </div>
+      <div className="container">
+        <h2 className="h2Class">Particulars</h2>
+        {particulars.map((item) => {
+          return (
+            <FormField
+              key={item.id}
+              tagtype={item.tagtype}
+              label={item.label}
+              id={item.id}
+              className={item.className}
+              type={item.type}
+              labelClass={item.labelClass}
+              placeholder={item.placeholder}
+              onChange={(e) => {
+                setData((prevData) => ({
+                  ...prevData,
+                  [item.id]: e.target.value,
+                }));
+              }}
+            />
+          );
+        })}
+      </div>
     </>
-  )
-
+  );
 }
-
 
 const notesDiv = [
   {
@@ -233,43 +219,82 @@ const notesDiv = [
     className: "inputField",
     type: "text",
     labelClass: "hideClass",
-    placeholder: "Additional Notes"
-  }
-]
+    placeholder: "Additional Notes",
+  },
+];
 
-function NotesDiv ({setData}){
-
-  return(
+function NotesDiv({ setData }) {
+  return (
     <>
-    <div className="container">
-    {notesDiv.map(item =>{
-      return (
-        <FormField
-          key={item.id}
-          tagtype={item.tagtype}
-          label={item.label}
-          id={item.id}
-          className={item.className}
-          type={item.type}
-          labelClass={item.labelClass}
-          placeholder={item.placeholder}
-          onChange={(e)=>{
-            setData((prevData)=>({
-              ...prevData,
-              [item.id]: e.target.value
-            }))
-          }}
-        />
-      )
-    })}
-    </div>
+      <div className="container">
+        {notesDiv.map((item) => {
+          return (
+            <FormField
+              key={item.id}
+              tagtype={item.tagtype}
+              label={item.label}
+              id={item.id}
+              className={item.className}
+              type={item.type}
+              labelClass={item.labelClass}
+              placeholder={item.placeholder}
+              onChange={(e) => {
+                setData((prevData) => ({
+                  ...prevData,
+                  [item.id]: e.target.value,
+                }));
+              }}
+            />
+          );
+        })}
+      </div>
     </>
-  )
+  );
 }
 
+const paymentInfo = [
+  {
+    tagtype: "textArea",
+    label: "Payment Info",
+    id: "paymentInfo",
+    className: "inputField",
+    type: "text",
+    labelClass: "hideClass",
+    placeholder: "Payment Info",
+  },
+];
+
+function PaymentInfoDiv({ setData }) {
+  return (
+    <>
+      <div className="container">
+        <h2 className="h2Class">Payment Info</h2>
+        {paymentInfo.map((item) => {
+          return (
+            <FormField
+              key={item.id}
+              tagtype={item.tagtype}
+              label={item.label}
+              id={item.id}
+              className={item.className}
+              type={item.type}
+              labelClass={item.labelClass}
+              placeholder={item.placeholder}
+              onChange={(e) => {
+                setData((prevData) => ({
+                  ...prevData,
+                  [item.id]: e.target.value,
+                }));
+              }}
+            />
+          );
+        })}
+      </div>
+    </>
+  );
+}
 
 function FormBody() {
-
   const [data, setData] = useState({
     sendersName: "",
     sendersAddress: "",
@@ -283,21 +308,31 @@ function FormBody() {
     invoiceDate: "",
     currency: "",
     remarks: "",
-    addNote: ""
-    
+    addNote: "",
+    paymentInfo: "",
   });
+
+
+
 
 
   return (
     <>
-    <button onClick={()=>{
-      console.log(JSON.stringify(data))
-    }}>Print</button>
-    <div className="formBodyDiv">
-      <DivSenderDeets setData={setData}/>
-      <DivClientDeets setData={setData}/>
-      <ParticularsDiv setData={setData}/>
-      <NotesDiv setData={setData}/>
+      <button
+        onClick={() => {
+          console.log(JSON.stringify(data));
+        }}
+      >
+        Print
+      </button>
+      <div className="formBodyDiv">
+        <DivSenderDeets setData={setData} />
+        <DivClientDeets setData={setData} />
+        <ParticularsDiv setData={setData} />
+        <Table />
+        <NotesDiv setData={setData} />
+        
+        <PaymentInfoDiv setData={setData} />
       </div>
     </>
   );
