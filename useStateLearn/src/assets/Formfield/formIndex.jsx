@@ -523,7 +523,7 @@ let uniqueFileName = Date.now();
         Print
       </button> */}
       <button>
-        {<PDFDownloadLink document={<MyDoc />} fileName={data.clientsName.length > 0 ? data.clientsName + uniqueFileName: uniqueFileName }>
+        {<PDFDownloadLink document={<MyDoc />} fileName={data.clientsName.length > 0 ? `${data.clientsName + uniqueFileName}.pdf`: `${uniqueFileName}.pdf` }>
           {({ blob, url, loading, error }) =>
             loading ? "Loading document..." : "Download now!"
           }
