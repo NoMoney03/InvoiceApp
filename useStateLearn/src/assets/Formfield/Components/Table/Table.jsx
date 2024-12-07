@@ -14,12 +14,19 @@ export default function Table({tableRow, setTableRow}) {
         Price: "",
         Total: "",
         Action: "",
+  
       },
     ]);
+
 
   return (
     <>
       <div className="container">
+        {/* <button onClick={()=>{
+          let array = tableRow.map(item => item.Total);
+          let subTot = array.reduce((a,b) => a+b, 0)
+          console.log(array, subTot)
+        }}>Print</button> */}
         <h2 className="h2Class">Items</h2>
         <table className="tableMaster">
           <thead>

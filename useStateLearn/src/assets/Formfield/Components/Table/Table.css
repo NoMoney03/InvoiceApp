@@ -1,7 +1,7 @@
 .tableMaster {
   max-width: var(--max-width);
   width: fit-content;
-  border: var(--bdPink);
+  /* border: var(--bdPink); */
 }
 
 .tableRow {
